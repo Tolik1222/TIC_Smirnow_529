@@ -1,7 +1,7 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy import signal
+from scipy import signal, fft
 
 # Параметри сигналу
 a = 0      # Середнє значення
@@ -29,25 +29,12 @@ filtered_signal = signal.sosfiltfilt(sos, signal_data)
 figures_dir = "SignalProcessing/figures"
 os.makedirs(figures_dir, exist_ok=True)
 
-# Побудова графіка з оригінальним і фільтрованим сигналами
-plt.figure(figsize=(10, 4))
-plt.plot(time_values, signal_data, label="Оригінальний сигнал", alpha=0.5)
-plt.plot(time_values, filtered_signal, label="Фільтрований сигнал (ФНЧ, sosfiltfilt)", linewidth=2)
-plt.xlabel("Час (с)")
-plt.ylabel("Амплітуда")
-plt.title("Застосування фільтра низьких частот (sosfiltfilt)")
-plt.legend()
-plt.grid()
-plt.savefig(os.path.join(figures_dir, "filtered_signal_filtfilt.png"))  # Збереження графіка
-plt.show()
-
-
-# Функція для побудови графіка в потрібному форматі
-def plot_signal(x, y, title, xlabel, ylabel):
+# Побудова графіка сигналу
+def plot_signal(x, y, title, xlabel, ylabel, filename):
     # Створюємо папку, якщо вона не існує
     save_dir = "./figures"
     os.makedirs(save_dir, exist_ok=True)
-    save_path = f"{save_dir}/{title}.png"
+    save_path = f"{save_dir}/{filename}.png"
 
     # Створення фігури та осей з необхідними розмірами
     fig, ax = plt.subplots(figsize=(21 / 2.54, 14 / 2.54))  # 21 см × 14 см
@@ -70,8 +57,24 @@ def plot_signal(x, y, title, xlabel, ylabel):
     plt.show()
 
 
-# Побудова графіка тільки для фільтрованого сигналу
+# Побудова графіка сигналу
 plot_signal(time_values, filtered_signal,
             "Сигнал з максимальною частотою F_max = 15 Гц",
             "Час (секунди)",
-            "Амплітуда сигналу")
+            "Амплітуда сигналу",
+            "filtered_signal")
+
+
+# РОЗРАХУНОК СПЕКТРУ СИГНАЛУ
+spectrum = fft.fft(filtered_signal)  # Перетворення Фур'є
+spectrum_shifted = np.abs(fft.fftshift(spectrum))  # Модульний спектр + зсув
+
+# Розрахунок частотних відліків
+freq_values = fft.fftshift(fft.fftfreq(n, 1 / Fs))
+
+# Побудова графіка спектра
+plot_signal(freq_values, spectrum_shifted,
+            "Амплітудний спектр сигналу",
+            "Частота (Гц)",
+            "Амплітуда спектра",
+            "signal_spectrum")
