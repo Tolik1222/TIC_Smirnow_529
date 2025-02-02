@@ -25,10 +25,6 @@ sos = signal.butter(3, w, 'low', output='sos')
 # Двонаправлена фільтрація для уникнення фазових зсувів
 filtered_signal = signal.sosfiltfilt(sos, signal_data)
 
-# Переконуємося, що директорія для збереження графіків існує
-figures_dir = "SignalProcessing/figures"
-os.makedirs(figures_dir, exist_ok=True)
-
 # Побудова графіка сигналу
 def plot_signal(x, y, title, xlabel, ylabel, filename):
     # Створюємо папку, якщо вона не існує
