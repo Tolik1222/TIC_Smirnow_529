@@ -35,6 +35,15 @@ def generate_sequence_5(surname, group_number, total_length=100):
     random.shuffle(sequence)
     return ''.join(sequence)
 
+def generate_sequence_6(surname, group_number, total_length=100):
+    letters = list(surname[:2])
+    digits = list(group_number)
+    n_letters = int(0.7 * total_length)
+    n_digits = total_length - n_letters
+    sequence = [random.choice(letters) for _ in range(n_letters)] + [random.choice(digits) for _ in range(n_digits)]
+    random.shuffle(sequence)
+    return ''.join(sequence)
+
 student_number = 13
 test_surname = "Смірнов"
 group_number = "529"
@@ -44,8 +53,9 @@ original_sequence_2 = generate_sequence_2(test_surname)
 original_sequence_3 = generate_sequence_3(test_surname)
 original_sequence_4 = generate_sequence_4(test_surname, group_number)
 original_sequence_5 = generate_sequence_5(test_surname, group_number)
+original_sequence_6 = generate_sequence_6(test_surname, group_number)
 
-original_sequences = [original_sequence_1, original_sequence_2, original_sequence_3, original_sequence_4, original_sequence_5]
+original_sequences = [original_sequence_1, original_sequence_2, original_sequence_3, original_sequence_4, original_sequence_5, original_sequence_6]
 
 os.makedirs("LosslessСompression", exist_ok=True)
 
