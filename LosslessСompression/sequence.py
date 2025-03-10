@@ -3,6 +3,7 @@ import os
 import string
 import collections
 import math
+import matplotlib.pyplot as plt
 
 
 def generate_sequence_1(n1, total_length=100):
@@ -101,6 +102,8 @@ original_sequences = [
 
 os.makedirs("LosslessСompression", exist_ok=True)
 
+results = []
+
 with open("LosslessСompression/results_sequence.txt", "w", encoding="utf-8") as file:
     for i, seq in enumerate(original_sequences, start=1):
         alphabet_size = len(set(seq))
@@ -119,3 +122,16 @@ with open("LosslessСompression/results_sequence.txt", "w", encoding="utf-8") as
         file.write(f"Тип розподілу: {uniformity}\n")
         file.write(f"Ентропія: {entropy:.4f}\n")
         file.write(f"Надмірність джерела: {source_excess:.4f}\n\n")
+
+        results.append([alphabet_size, round(entropy, 2), round(source_excess, 2), uniformity])
+
+fig, ax = plt.subplots(figsize=(14 / 1.54, len(original_sequences) / 1.54))
+headers = ['Розмір алфавіту', 'Ентропія', 'Надмірність', 'Ймовірність']
+rows = [f'Послідовність {i + 1}' for i in range(len(original_sequences))]
+
+ax.axis('off')
+table = ax.table(cellText=results, colLabels=headers, rowLabels=rows, loc='center', cellLoc='center')
+table.set_fontsize(14)
+table.scale(0.8, 2)
+
+fig.savefig("LosslessСompression/Характеристики_сформованих_послідовностей.png")
