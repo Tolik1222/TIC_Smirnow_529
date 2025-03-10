@@ -1,39 +1,39 @@
 import random
-import os
 
-# Вхідні параметри
-N_sequence = 100  # Розмір послідовності
-N1 = 13  # Порядковий номер студента у журналі групи (замініть на свій)
-N0 = N_sequence - N1  # Кількість нулів
+def generate_sequence_1(n1, total_length=100):
+    list1 = ['1'] * n1
+    list0 = ['0'] * (total_length - n1)
+    sequence = list1 + list0
+    random.shuffle(sequence)
+    return ''.join(sequence)
 
-# Створення списків
-list1 = ['1'] * N1
-list0 = ['0'] * N0
+def generate_sequence_2(surname, total_length=100):
+    list1 = list(surname)
+    list0 = ['0'] * (total_length - len(surname))
+    sequence = list1 + list0
+    return ''.join(sequence)
 
-# Об'єднання та перемішування
-sequence_list = list1 + list0
-random.shuffle(sequence_list)
+def generate_sequence_3(surname, total_length=100):
+    list1 = list(surname)
+    list0 = ['0'] * (total_length - len(surname))
+    sequence = list1 + list0
+    random.shuffle(sequence)
+    return ''.join(sequence)
 
-# Формування рядкової послідовності
-original_sequence_1 = ''.join(sequence_list)
 
-# Визначення розміру алфавіту
-unique_chars = set(original_sequence_1)
-sequence_alphabet_size = len(unique_chars)
+student_number = 13  #
+test_surname = "Смірнов"
 
-# Обчислення кількості байтів для збереження
-original_sequence_size_bytes = len(original_sequence_1)  # У байтах
+original_sequence_1 = generate_sequence_1(student_number)
+original_sequence_2 = generate_sequence_2(test_surname)
+original_sequence_3 = generate_sequence_3(test_surname)
 
-# Створення директорії, якщо її немає
-output_dir = "LosslessСompression"
-os.makedirs(output_dir, exist_ok=True)
+original_sequences = [original_sequence_1, original_sequence_2, original_sequence_3]
 
-# Запис у файл results_sequence.txt
-output_file = os.path.join(output_dir, "results_sequence.txt")
-with open(output_file, "w", encoding="utf-8") as file:
-    file.write(f"Послідовність: {original_sequence_1}\n")
-    file.write(f"Розмір послідовності: {original_sequence_size_bytes} byte\n")
-    file.write(f"Розмір алфавіту: {sequence_alphabet_size}\n")
-    file.write("-" * 50 + "\n")
-
-print("Тестова послідовність №1 успішно збережена у results_sequence.txt")
+with open("LosslessСompression/results_sequence.txt", "a", encoding="utf-8") as file:
+    for i, seq in enumerate(original_sequences, start=1):
+        alphabet_size = len(set(seq))
+        size_bytes = len(seq)
+        file.write(f"Послідовність {i}: {seq}\n")
+        file.write(f"Розмір послідовності {size_bytes} byte\n")
+        file.write(f"Розмір алфавіту: {alphabet_size}\n\n")
