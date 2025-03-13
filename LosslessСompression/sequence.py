@@ -149,7 +149,6 @@ with open("LosslessСompression/results_sequence.txt", "w", encoding="utf-8") as
         file.write(f"Ентропія: {entropy:.4f}\n")
         file.write(f"Надмірність джерела: {source_excess:.4f}\n\n")
 
-# Записуємо створені послідовності у файл sequence.txt одним рядком, через кому
 with open("LosslessСompression/sequence.txt", "w", encoding="utf-8") as seq_file:
     seq_file.write(",".join(original_sequences))
 
