@@ -40,9 +40,10 @@ def generate_sequence_4(surname, group_number, total_length=100):
 
 def generate_sequence_5(surname, group_number, total_length=100):
     elements = list(surname[:2]) + list(group_number)
-    sequence = [random.choice(elements) for _ in range(total_length)]
+    sequence = elements * (total_length // len(elements))
     random.shuffle(sequence)
     return ''.join(sequence)
+
 
 
 def generate_sequence_6(surname, group_number, total_length=100):
@@ -124,6 +125,35 @@ with open("LosslessСompression/results_sequence.txt", "w", encoding="utf-8") as
         file.write(f"Надмірність джерела: {source_excess:.4f}\n\n")
 
         results.append([alphabet_size, round(entropy, 2), round(source_excess, 2), uniformity])
+
+# Створюємо папку, якщо вона ще не існує
+os.makedirs("LosslessСompression", exist_ok=True)
+
+# Записуємо результати аналізу у файл results_sequence.txt
+with open("LosslessСompression/results_sequence.txt", "w", encoding="utf-8") as file:
+    for i, seq in enumerate(original_sequences, start=1):
+        alphabet_size = len(set(seq))
+        size_bytes = len(seq)
+        probabilities = calculate_probabilities(seq)
+        entropy = calculate_entropy(probabilities)
+        source_excess = calculate_source_excess(entropy, alphabet_size)
+        uniformity, mean_probability = determine_uniformity(probabilities)
+        probability_str = ', '.join([f"{symbol}={prob:.4f}" for symbol, prob in probabilities.items()])
+
+        file.write(f"Послідовність {i}: {seq}\n")
+        file.write(f"Розмір послідовності: {size_bytes} byte\n")
+        file.write(f"Розмір алфавіту: {alphabet_size}\n")
+        file.write(f"Ймовірності: {probability_str}\n")
+        file.write(f"Середнє арифметичне ймовірностей: {mean_probability:.4f}\n")
+        file.write(f"Тип розподілу: {uniformity}\n")
+        file.write(f"Ентропія: {entropy:.4f}\n")
+        file.write(f"Надмірність джерела: {source_excess:.4f}\n\n")
+
+# Записуємо створені послідовності у файл sequence.txt для подальшого використання
+with open("LosslessСompression/sequence.txt", "w", encoding="utf-8") as seq_file:
+    for seq in original_sequences:
+        seq_file.write(seq + "\n")
+
 
 fig, ax = plt.subplots(figsize=(14 / 1.54, len(original_sequences) / 1.54))
 headers = ['Розмір алфавіту', 'Ентропія', 'Надмірність', 'Ймовірність']
