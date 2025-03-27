@@ -79,7 +79,7 @@ def decode_lzw(sequences):
             dictionary[len(dictionary)] = current
             previous = current
 
-    return result
+    return results
 
 
 
