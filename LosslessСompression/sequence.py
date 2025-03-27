@@ -101,11 +101,9 @@ original_sequences = [
     generate_sequence_8()
 ]
 
-os.makedirs("LosslessСompression", exist_ok=True)
-
 results = []
 
-with open("LosslessСompression/results_sequence.txt", "w", encoding="utf-8") as file:
+with open("results_sequence.txt", "w", encoding="utf-8") as file:
     for i, seq in enumerate(original_sequences, start=1):
         alphabet_size = len(set(seq))
         size_bytes = len(seq)
@@ -126,11 +124,9 @@ with open("LosslessСompression/results_sequence.txt", "w", encoding="utf-8") as
 
         results.append([alphabet_size, round(entropy, 2), round(source_excess, 2), uniformity])
 
-# Створюємо папку, якщо вона ще не існує
-os.makedirs("LosslessСompression", exist_ok=True)
 
 # Записуємо результати аналізу у файл results_sequence.txt
-with open("LosslessСompression/results_sequence.txt", "w", encoding="utf-8") as file:
+with open("results_sequence.txt", "w", encoding="utf-8") as file:
     for i, seq in enumerate(original_sequences, start=1):
         alphabet_size = len(set(seq))
         size_bytes = len(seq)
@@ -149,7 +145,7 @@ with open("LosslessСompression/results_sequence.txt", "w", encoding="utf-8") as
         file.write(f"Ентропія: {entropy:.4f}\n")
         file.write(f"Надмірність джерела: {source_excess:.4f}\n\n")
 
-with open("LosslessСompression/sequence.txt", "w", encoding="utf-8") as seq_file:
+with open("sequence.txt", "w", encoding="utf-8") as seq_file:
     seq_file.write(",".join(original_sequences))
 
 
@@ -163,4 +159,4 @@ table = ax.table(cellText=results, colLabels=headers, rowLabels=rows, loc='cente
 table.set_fontsize(14)
 table.scale(0.8, 2)
 
-fig.savefig("LosslessСompression/Характеристики_сформованих_послідовностей.png")
+fig.savefig("Характеристики_сформованих_послідовностей.png")
