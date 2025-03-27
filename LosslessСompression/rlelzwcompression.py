@@ -60,23 +60,27 @@ def encode_lzw(sequence):
     return result, size, lzw_steps
 
 
-def decode_lzw(encoded_sequence):
+def decode_lzw(sequences):
     dictionary = {i: chr(i) for i in range(65536)}
-    result = ""
+    results = ""
     previous = None
+    current = ""
 
-    for code in encoded_sequence:
+    for code in sequences:
         if code in dictionary:
             current = dictionary[code]
+            results += current
+            if previous is not None:
+                dictionary[len(dictionary)] = previous + current[0]
+            previous = current
         else:
             current = previous + previous[0]
-
-        result += current
-        if previous is not None:
-            dictionary[len(dictionary)] = previous + current[0]
-        previous = current
+            results += current
+            dictionary[len(dictionary)] = current
+            previous = current
 
     return result
+
 
 
 results = []

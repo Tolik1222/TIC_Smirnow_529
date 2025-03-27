@@ -22,39 +22,39 @@ RLE Кодування
 Код       Елемент        Біти
 ----------------------------------------
 Code: 48, Element: 0, Bits: 16
-Code: 65536, Element: 00, Bits: 16
-Code: 65537, Element: 000, Bits: 16
-Code: 65538, Element: 0000, Bits: 16
-Code: 65539, Element: 00000, Bits: 16
+Code: 65536, Element: 00, Bits: 17
+Code: 65537, Element: 000, Bits: 17
+Code: 65538, Element: 0000, Bits: 17
+Code: 65539, Element: 00000, Bits: 17
 Code: 49, Element: 1, Bits: 16
-Code: 65539, Element: 00000, Bits: 16
+Code: 65539, Element: 00000, Bits: 17
 Code: 48, Element: 0, Bits: 16
-Code: 65541, Element: 10, Bits: 16
-Code: 65540, Element: 000001, Bits: 16
+Code: 65541, Element: 10, Bits: 17
+Code: 65540, Element: 000001, Bits: 17
 Code: 49, Element: 1, Bits: 16
-Code: 65544, Element: 100, Bits: 16
-Code: 65537, Element: 000, Bits: 16
-Code: 65547, Element: 1000, Bits: 16
-Code: 65543, Element: 01, Bits: 16
-Code: 65542, Element: 000000, Bits: 16
-Code: 65551, Element: 0000000, Bits: 16
-Code: 65536, Element: 00, Bits: 16
-Code: 65549, Element: 10000, Bits: 16
-Code: 65552, Element: 00000000, Bits: 16
-Code: 65553, Element: 001, Bits: 16
-Code: 65555, Element: 000000000, Bits: 16
-Code: 65538, Element: 0000, Bits: 16
-Code: 65544, Element: 100, Bits: 16
-Code: 65541, Element: 10, Bits: 16
-Code: 65546, Element: 11, Bits: 16
-Code: 65542, Element: 000000, Bits: 16
+Code: 65544, Element: 100, Bits: 17
+Code: 65537, Element: 000, Bits: 17
+Code: 65547, Element: 1000, Bits: 17
+Code: 65543, Element: 01, Bits: 17
+Code: 65542, Element: 000000, Bits: 17
+Code: 65551, Element: 0000000, Bits: 17
+Code: 65536, Element: 00, Bits: 17
+Code: 65549, Element: 10000, Bits: 17
+Code: 65552, Element: 00000000, Bits: 17
+Code: 65553, Element: 001, Bits: 17
+Code: 65555, Element: 000000000, Bits: 17
+Code: 65538, Element: 0000, Bits: 17
+Code: 65544, Element: 100, Bits: 17
+Code: 65541, Element: 10, Bits: 17
+Code: 65546, Element: 11, Bits: 17
+Code: 65542, Element: 000000, Bits: 17
 ----------------------------------------
 Закодована послідовність (LZW):
 48,65536,65537,65538,65539,49,65539,48,65541,65540,49,65544,65537,65547,65543,65542,65551,65536,65549,65552,65553,65555,65538,65544,65541,65546,65542
-Розмір LZW: 432 bits
+Розмір LZW: 455 bits
 Декодована послідовність (перевірка):
-0𐀀𐀁𐀂𐀃1𐀃0𐀅𐀄1𐀈𐀁𐀋𐀇𐀆𐀏𐀀𐀍𐀐𐀑𐀓𐀂𐀈𐀅𐀊𐀆
- Коефіцієнт стиснення LZW: 3.7
+0000000000000001000000100000011100000100001000000000000000100000000000000100000000000001001011000000
+ Коефіцієнт стиснення LZW: 3.52
 
 ================================================================================
 
@@ -86,26 +86,26 @@ Code: 1085, Element: н, Bits: 16
 Code: 1086, Element: о, Bits: 16
 Code: 1074, Element: в, Bits: 16
 Code: 48, Element: 0, Bits: 16
-Code: 65543, Element: 00, Bits: 16
-Code: 65544, Element: 000, Bits: 16
-Code: 65545, Element: 0000, Bits: 16
-Code: 65546, Element: 00000, Bits: 16
-Code: 65547, Element: 000000, Bits: 16
-Code: 65548, Element: 0000000, Bits: 16
-Code: 65549, Element: 00000000, Bits: 16
-Code: 65550, Element: 000000000, Bits: 16
-Code: 65551, Element: 0000000000, Bits: 16
-Code: 65552, Element: 00000000000, Bits: 16
-Code: 65553, Element: 000000000000, Bits: 16
-Code: 65554, Element: 0000000000000, Bits: 16
-Code: 65543, Element: 00, Bits: 16
+Code: 65543, Element: 00, Bits: 17
+Code: 65544, Element: 000, Bits: 17
+Code: 65545, Element: 0000, Bits: 17
+Code: 65546, Element: 00000, Bits: 17
+Code: 65547, Element: 000000, Bits: 17
+Code: 65548, Element: 0000000, Bits: 17
+Code: 65549, Element: 00000000, Bits: 17
+Code: 65550, Element: 000000000, Bits: 17
+Code: 65551, Element: 0000000000, Bits: 17
+Code: 65552, Element: 00000000000, Bits: 17
+Code: 65553, Element: 000000000000, Bits: 17
+Code: 65554, Element: 0000000000000, Bits: 17
+Code: 65543, Element: 00, Bits: 17
 ----------------------------------------
 Закодована послідовність (LZW):
 1057,1084,1110,1088,1085,1086,1074,48,65543,65544,65545,65546,65547,65548,65549,65550,65551,65552,65553,65554,65543
-Розмір LZW: 336 bits
+Розмір LZW: 349 bits
 Декодована послідовність (перевірка):
-Смірнов0𐀇𐀈𐀉𐀊𐀋𐀌𐀍𐀎𐀏𐀐𐀑𐀒𐀇
- Коефіцієнт стиснення LZW: 4.76
+Смірнов000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+ Коефіцієнт стиснення LZW: 4.58
 
 ================================================================================
 
@@ -130,36 +130,36 @@ RLE Кодування
 Код       Елемент        Біти
 ----------------------------------------
 Code: 48, Element: 0, Bits: 16
-Code: 65536, Element: 00, Bits: 16
-Code: 65537, Element: 000, Bits: 16
+Code: 65536, Element: 00, Bits: 17
+Code: 65537, Element: 000, Bits: 17
 Code: 48, Element: 0, Bits: 16
 Code: 1074, Element: в, Bits: 16
-Code: 65538, Element: 0000, Bits: 16
-Code: 65541, Element: 00000, Bits: 16
-Code: 65542, Element: 000000, Bits: 16
-Code: 65538, Element: 0000, Bits: 16
+Code: 65538, Element: 0000, Bits: 17
+Code: 65541, Element: 00000, Bits: 17
+Code: 65542, Element: 000000, Bits: 17
+Code: 65538, Element: 0000, Bits: 17
 Code: 1084, Element: м, Bits: 16
-Code: 65543, Element: 0000000, Bits: 16
-Code: 65546, Element: 00000000, Bits: 16
-Code: 65547, Element: 000000000, Bits: 16
+Code: 65543, Element: 0000000, Bits: 17
+Code: 65546, Element: 00000000, Bits: 17
+Code: 65547, Element: 000000000, Bits: 17
 Code: 1086, Element: о, Bits: 16
-Code: 65547, Element: 000000000, Bits: 16
-Code: 65538, Element: 0000, Bits: 16
+Code: 65547, Element: 000000000, Bits: 17
+Code: 65538, Element: 0000, Bits: 17
 Code: 1088, Element: р, Bits: 16
-Code: 65550, Element: 0000000000, Bits: 16
-Code: 65542, Element: 000000, Bits: 16
+Code: 65550, Element: 0000000000, Bits: 17
+Code: 65542, Element: 000000, Bits: 17
 Code: 1085, Element: н, Bits: 16
-Code: 65553, Element: 00000000000, Bits: 16
-Code: 65537, Element: 000, Bits: 16
+Code: 65553, Element: 00000000000, Bits: 17
+Code: 65537, Element: 000, Bits: 17
 Code: 1057, Element: С, Bits: 16
 Code: 1110, Element: і, Bits: 16
 ----------------------------------------
 Закодована послідовність (LZW):
 48,65536,65537,48,1074,65538,65541,65542,65538,1084,65543,65546,65547,1086,65547,65538,1088,65550,65542,1085,65553,65537,1057,1110
-Розмір LZW: 384 bits
+Розмір LZW: 399 bits
 Декодована послідовність (перевірка):
-0𐀀𐀁0в𐀂𐀅𐀆𐀂м𐀇𐀊𐀋о𐀋𐀂р𐀎𐀆н𐀑𐀁Сі
- Коефіцієнт стиснення LZW: 4.17
+0000000в0000000000000000000м000000000000000000000000о0000000000000р0000000000000000н00000000000000Сі
+ Коефіцієнт стиснення LZW: 4.01
 
 ================================================================================
 
@@ -193,43 +193,43 @@ Code: 1074, Element: в, Bits: 16
 Code: 53, Element: 5, Bits: 16
 Code: 50, Element: 2, Bits: 16
 Code: 57, Element: 9, Bits: 16
-Code: 65536, Element: См, Bits: 16
-Code: 65538, Element: ір, Bits: 16
-Code: 65540, Element: но, Bits: 16
-Code: 65542, Element: в5, Bits: 16
-Code: 65544, Element: 29, Bits: 16
-Code: 65546, Element: Смі, Bits: 16
-Code: 65539, Element: рн, Bits: 16
-Code: 65541, Element: ов, Bits: 16
-Code: 65543, Element: 52, Bits: 16
-Code: 65545, Element: 9С, Bits: 16
-Code: 65537, Element: мі, Bits: 16
-Code: 65552, Element: рно, Bits: 16
-Code: 65549, Element: в52, Bits: 16
-Code: 65555, Element: 9См, Bits: 16
-Code: 65547, Element: ірн, Bits: 16
-Code: 65553, Element: ов5, Bits: 16
-Code: 65550, Element: 29С, Bits: 16
-Code: 65556, Element: мір, Bits: 16
-Code: 65548, Element: нов, Bits: 16
-Code: 65554, Element: 529, Bits: 16
-Code: 65551, Element: Смір, Bits: 16
-Code: 65564, Element: нов5, Bits: 16
-Code: 65562, Element: 29См, Bits: 16
-Code: 65560, Element: ірно, Bits: 16
-Code: 65558, Element: в529, Bits: 16
-Code: 65566, Element: Смірн, Bits: 16
-Code: 65561, Element: ов52, Bits: 16
-Code: 65559, Element: 9Смі, Bits: 16
-Code: 65557, Element: рнов, Bits: 16
-Code: 65554, Element: 529, Bits: 16
+Code: 65536, Element: См, Bits: 17
+Code: 65538, Element: ір, Bits: 17
+Code: 65540, Element: но, Bits: 17
+Code: 65542, Element: в5, Bits: 17
+Code: 65544, Element: 29, Bits: 17
+Code: 65546, Element: Смі, Bits: 17
+Code: 65539, Element: рн, Bits: 17
+Code: 65541, Element: ов, Bits: 17
+Code: 65543, Element: 52, Bits: 17
+Code: 65545, Element: 9С, Bits: 17
+Code: 65537, Element: мі, Bits: 17
+Code: 65552, Element: рно, Bits: 17
+Code: 65549, Element: в52, Bits: 17
+Code: 65555, Element: 9См, Bits: 17
+Code: 65547, Element: ірн, Bits: 17
+Code: 65553, Element: ов5, Bits: 17
+Code: 65550, Element: 29С, Bits: 17
+Code: 65556, Element: мір, Bits: 17
+Code: 65548, Element: нов, Bits: 17
+Code: 65554, Element: 529, Bits: 17
+Code: 65551, Element: Смір, Bits: 17
+Code: 65564, Element: нов5, Bits: 17
+Code: 65562, Element: 29См, Bits: 17
+Code: 65560, Element: ірно, Bits: 17
+Code: 65558, Element: в529, Bits: 17
+Code: 65566, Element: Смірн, Bits: 17
+Code: 65561, Element: ов52, Bits: 17
+Code: 65559, Element: 9Смі, Bits: 17
+Code: 65557, Element: рнов, Bits: 17
+Code: 65554, Element: 529, Bits: 17
 ----------------------------------------
 Закодована послідовність (LZW):
 1057,1084,1110,1088,1085,1086,1074,53,50,57,65536,65538,65540,65542,65544,65546,65539,65541,65543,65545,65537,65552,65549,65555,65547,65553,65550,65556,65548,65554,65551,65564,65562,65560,65558,65566,65561,65559,65557,65554
-Розмір LZW: 640 bits
+Розмір LZW: 670 bits
 Декодована послідовність (перевірка):
-Смірнов529𐀀𐀂𐀄𐀆𐀈𐀊𐀃𐀅𐀇𐀉𐀁𐀐𐀍𐀓𐀋𐀑𐀎𐀔𐀌𐀒𐀏𐀜𐀚𐀘𐀖𐀞𐀙𐀗𐀕𐀒
- Коефіцієнт стиснення LZW: 2.5
+Смірнов529Смірнов529Смірнов529Смірнов529Смірнов529Смірнов529Смірнов529Смірнов529Смірнов529Смірнов529
+ Коефіцієнт стиснення LZW: 2.39
 
 ================================================================================
 
@@ -266,60 +266,60 @@ Code: 53, Element: 5, Bits: 16
 Code: 57, Element: 9, Bits: 16
 Code: 50, Element: 2, Bits: 16
 Code: 53, Element: 5, Bits: 16
-Code: 65540, Element: м9, Bits: 16
-Code: 65545, Element: 59, Bits: 16
+Code: 65540, Element: м9, Bits: 17
+Code: 65545, Element: 59, Bits: 17
 Code: 53, Element: 5, Bits: 16
-Code: 65543, Element: 5С, Bits: 16
-Code: 65551, Element: 55, Bits: 16
-Code: 65544, Element: С5, Bits: 16
-Code: 65538, Element: С9, Bits: 16
+Code: 65543, Element: 5С, Bits: 17
+Code: 65551, Element: 55, Bits: 17
+Code: 65544, Element: С5, Bits: 17
+Code: 65538, Element: С9, Bits: 17
 Code: 50, Element: 2, Bits: 16
-Code: 65556, Element: 22, Bits: 16
+Code: 65556, Element: 22, Bits: 17
 Code: 1084, Element: м, Bits: 16
-Code: 65548, Element: 5м, Bits: 16
-Code: 65546, Element: 92, Bits: 16
-Code: 65558, Element: м5, Bits: 16
-Code: 65556, Element: 22, Bits: 16
-Code: 65539, Element: 9м, Bits: 16
-Code: 65552, Element: 5С5, Bits: 16
+Code: 65548, Element: 5м, Bits: 17
+Code: 65546, Element: 92, Bits: 17
+Code: 65558, Element: м5, Bits: 17
+Code: 65556, Element: 22, Bits: 17
+Code: 65539, Element: 9м, Bits: 17
+Code: 65552, Element: 5С5, Bits: 17
 Code: 1084, Element: м, Bits: 16
-Code: 65565, Element: мм, Bits: 16
-Code: 65558, Element: м5, Bits: 16
+Code: 65565, Element: мм, Bits: 17
+Code: 65558, Element: м5, Bits: 17
 Code: 1084, Element: м, Bits: 16
 Code: 50, Element: 2, Bits: 16
 Code: 57, Element: 9, Bits: 16
 Code: 1057, Element: С, Bits: 16
-Code: 65567, Element: м5м, Bits: 16
-Code: 65555, Element: С92, Bits: 16
+Code: 65567, Element: м5м, Bits: 17
+Code: 65555, Element: С92, Bits: 17
 Code: 50, Element: 2, Bits: 16
 Code: 1084, Element: м, Bits: 16
 Code: 1057, Element: С, Bits: 16
-Code: 65537, Element: 2С, Bits: 16
-Code: 65570, Element: 9С, Bits: 16
-Code: 65571, Element: См, Bits: 16
-Code: 65548, Element: 5м, Bits: 16
-Code: 65576, Element: С2, Bits: 16
-Code: 65570, Element: 9С, Bits: 16
-Code: 65546, Element: 92, Bits: 16
-Code: 65536, Element: 52, Bits: 16
-Code: 65537, Element: 2С, Bits: 16
-Code: 65565, Element: мм, Bits: 16
-Code: 65576, Element: С2, Bits: 16
-Code: 65540, Element: м9, Bits: 16
-Code: 65579, Element: См5, Bits: 16
-Code: 65570, Element: 9С, Bits: 16
-Code: 65537, Element: 2С, Bits: 16
-Code: 65543, Element: 5С, Bits: 16
-Code: 65541, Element: 99, Bits: 16
-Code: 65546, Element: 92, Bits: 16
-Code: 65546, Element: 92, Bits: 16
+Code: 65537, Element: 2С, Bits: 17
+Code: 65570, Element: 9С, Bits: 17
+Code: 65571, Element: См, Bits: 17
+Code: 65548, Element: 5м, Bits: 17
+Code: 65576, Element: С2, Bits: 17
+Code: 65570, Element: 9С, Bits: 17
+Code: 65546, Element: 92, Bits: 17
+Code: 65536, Element: 52, Bits: 17
+Code: 65537, Element: 2С, Bits: 17
+Code: 65565, Element: мм, Bits: 17
+Code: 65576, Element: С2, Bits: 17
+Code: 65540, Element: м9, Bits: 17
+Code: 65579, Element: См5, Bits: 17
+Code: 65570, Element: 9С, Bits: 17
+Code: 65537, Element: 2С, Bits: 17
+Code: 65543, Element: 5С, Bits: 17
+Code: 65541, Element: 99, Bits: 17
+Code: 65546, Element: 92, Bits: 17
+Code: 65546, Element: 92, Bits: 17
 ----------------------------------------
 Закодована послідовність (LZW):
 53,50,1057,57,1084,57,57,53,1057,53,57,50,53,65540,65545,53,65543,65551,65544,65538,50,65556,1084,65548,65546,65558,65556,65539,65552,1084,65565,65558,1084,50,57,1057,65567,65555,50,1084,1057,65537,65570,65571,65548,65576,65570,65546,65536,65537,65565,65576,65540,65579,65570,65537,65543,65541,65546,65546
-Розмір LZW: 960 bits
+Розмір LZW: 996 bits
 Декодована послідовність (перевірка):
-52С9м995С5925𐀄𐀉5𐀇𐀏𐀈𐀂2𐀔м𐀌𐀊𐀖𐀔𐀃𐀐м𐀝𐀖м29С𐀟𐀓2мС𐀁𐀢𐀣𐀌𐀨𐀢𐀊𐀀𐀁𐀝𐀨𐀄𐀫𐀢𐀁𐀇𐀅𐀊𐀊
- Коефіцієнт стиснення LZW: 1.67
+52С9м995С5925м95955С55С5С9222м5м92м5229м5С5мммм5м29См5мС922мС2С9ССм5мС29С92522СммС2м9См59С2С5С999292
+ Коефіцієнт стиснення LZW: 1.61
 
 ================================================================================
 
@@ -347,64 +347,64 @@ Code: 1084, Element: м, Bits: 16
 Code: 1084, Element: м, Bits: 16
 Code: 1057, Element: С, Bits: 16
 Code: 1057, Element: С, Bits: 16
-Code: 65537, Element: мС, Bits: 16
-Code: 65539, Element: См, Bits: 16
-Code: 65536, Element: мм, Bits: 16
-Code: 65536, Element: мм, Bits: 16
+Code: 65537, Element: мС, Bits: 17
+Code: 65539, Element: См, Bits: 17
+Code: 65536, Element: мм, Bits: 17
+Code: 65536, Element: мм, Bits: 17
 Code: 50, Element: 2, Bits: 16
 Code: 57, Element: 9, Bits: 16
 Code: 1057, Element: С, Bits: 16
 Code: 57, Element: 9, Bits: 16
 Code: 57, Element: 9, Bits: 16
-Code: 65542, Element: ммм, Bits: 16
+Code: 65542, Element: ммм, Bits: 17
 Code: 1057, Element: С, Bits: 16
 Code: 53, Element: 5, Bits: 16
-Code: 65537, Element: мС, Bits: 16
+Code: 65537, Element: мС, Bits: 17
 Code: 53, Element: 5, Bits: 16
 Code: 50, Element: 2, Bits: 16
-Code: 65536, Element: мм, Bits: 16
-Code: 65538, Element: СС, Bits: 16
-Code: 65548, Element: 9м, Bits: 16
-Code: 65542, Element: ммм, Bits: 16
-Code: 65549, Element: мммС, Bits: 16
-Code: 65538, Element: СС, Bits: 16
-Code: 65551, Element: 5м, Bits: 16
+Code: 65536, Element: мм, Bits: 17
+Code: 65538, Element: СС, Bits: 17
+Code: 65548, Element: 9м, Bits: 17
+Code: 65542, Element: ммм, Bits: 17
+Code: 65549, Element: мммС, Bits: 17
+Code: 65538, Element: СС, Bits: 17
+Code: 65551, Element: 5м, Bits: 17
 Code: 1084, Element: м, Bits: 16
 Code: 57, Element: 9, Bits: 16
-Code: 65544, Element: 29, Bits: 16
-Code: 65551, Element: 5м, Bits: 16
+Code: 65544, Element: 29, Bits: 17
+Code: 65551, Element: 5м, Bits: 17
 Code: 50, Element: 2, Bits: 16
-Code: 65546, Element: С9, Bits: 16
-Code: 65537, Element: мС, Bits: 16
-Code: 65554, Element: 2м, Bits: 16
+Code: 65546, Element: С9, Bits: 17
+Code: 65537, Element: мС, Bits: 17
+Code: 65554, Element: 2м, Bits: 17
 Code: 1084, Element: м, Bits: 16
-Code: 65566, Element: 2С, Bits: 16
-Code: 65566, Element: 2С, Bits: 16
-Code: 65545, Element: 9С, Bits: 16
-Code: 65555, Element: ммС, Bits: 16
-Code: 65538, Element: СС, Bits: 16
-Code: 65567, Element: С9м, Bits: 16
-Code: 65561, Element: 5мм, Bits: 16
-Code: 65537, Element: мС, Bits: 16
+Code: 65566, Element: 2С, Bits: 17
+Code: 65566, Element: 2С, Bits: 17
+Code: 65545, Element: 9С, Bits: 17
+Code: 65555, Element: ммС, Bits: 17
+Code: 65538, Element: СС, Bits: 17
+Code: 65567, Element: С9м, Bits: 17
+Code: 65561, Element: 5мм, Bits: 17
+Code: 65537, Element: мС, Bits: 17
 Code: 1084, Element: м, Bits: 16
 Code: 53, Element: 5, Bits: 16
-Code: 65539, Element: См, Bits: 16
-Code: 65556, Element: СС9, Bits: 16
-Code: 65538, Element: СС, Bits: 16
+Code: 65539, Element: См, Bits: 17
+Code: 65556, Element: СС9, Bits: 17
+Code: 65538, Element: СС, Bits: 17
 Code: 50, Element: 2, Bits: 16
-Code: 65577, Element: 5ммм, Bits: 16
-Code: 65568, Element: мС2, Bits: 16
-Code: 65545, Element: 9С, Bits: 16
-Code: 65566, Element: 2С, Bits: 16
-Code: 65550, Element: С5, Bits: 16
+Code: 65577, Element: 5ммм, Bits: 17
+Code: 65568, Element: мС2, Bits: 17
+Code: 65545, Element: 9С, Bits: 17
+Code: 65566, Element: 2С, Bits: 17
+Code: 65550, Element: С5, Bits: 17
 Code: 57, Element: 9, Bits: 16
 ----------------------------------------
 Закодована послідовність (LZW):
 1084,1084,1057,1057,65537,65539,65536,65536,50,57,1057,57,57,65542,1057,53,65537,53,50,65536,65538,65548,65542,65549,65538,65551,1084,57,65544,65551,50,65546,65537,65554,1084,65566,65566,65545,65555,65538,65567,65561,65537,1084,53,65539,65556,65538,50,65577,65568,65545,65566,65550,57
-Розмір LZW: 880 bits
+Розмір LZW: 914 bits
 Декодована послідовність (перевірка):
-ммСС𐀁𐀃𐀀𐀀29С99𐀆С5𐀁52𐀀𐀂𐀌𐀆𐀍𐀂𐀏м9𐀈𐀏2𐀊𐀁𐀒м𐀞𐀞𐀉𐀓𐀂𐀟𐀙𐀁м5𐀃𐀔𐀂2𐀩𐀠𐀉𐀞𐀎9
- Коефіцієнт стиснення LZW: 1.82
+ммССмССммммм29С99мммС5мС52ммСС9мммммммССС5мм9295м2С9мС2мм2С2С9СммСССС9м5мммСм5СмСС9СС25ммммС29С2СС59
+ Коефіцієнт стиснення LZW: 1.75
 
 ================================================================================
 
@@ -442,7 +442,7 @@ Code: 56, Element: 8, Bits: 16
 Code: 114, Element: r, Bits: 16
 Code: 50, Element: 2, Bits: 16
 Code: 109, Element: m, Bits: 16
-Code: 65548, Element: 2m, Bits: 16
+Code: 65548, Element: 2m, Bits: 17
 Code: 115, Element: s, Bits: 16
 Code: 51, Element: 3, Bits: 16
 Code: 56, Element: 8, Bits: 16
@@ -478,7 +478,7 @@ Code: 112, Element: p, Bits: 16
 Code: 112, Element: p, Bits: 16
 Code: 98, Element: b, Bits: 16
 Code: 54, Element: 6, Bits: 16
-Code: 65570, Element: 13, Bits: 16
+Code: 65570, Element: 13, Bits: 17
 Code: 113, Element: q, Bits: 16
 Code: 55, Element: 7, Bits: 16
 Code: 120, Element: x, Bits: 16
@@ -507,7 +507,7 @@ Code: 98, Element: b, Bits: 16
 Code: 109, Element: m, Bits: 16
 Code: 118, Element: v, Bits: 16
 Code: 100, Element: d, Bits: 16
-Code: 65602, Element: m9, Bits: 16
+Code: 65602, Element: m9, Bits: 17
 Code: 108, Element: l, Bits: 16
 Code: 55, Element: 7, Bits: 16
 Code: 55, Element: 7, Bits: 16
@@ -519,16 +519,16 @@ Code: 56, Element: 8, Bits: 16
 Code: 109, Element: m, Bits: 16
 Code: 113, Element: q, Bits: 16
 Code: 102, Element: f, Bits: 16
-Code: 65594, Element: hu, Bits: 16
+Code: 65594, Element: hu, Bits: 17
 Code: 114, Element: r, Bits: 16
 Code: 101, Element: e, Bits: 16
-Code: 65604, Element: jk, Bits: 16
+Code: 65604, Element: jk, Bits: 17
 ----------------------------------------
 Закодована послідовність (LZW):
 113,112,103,53,122,117,52,101,49,54,56,114,50,109,65548,115,51,56,108,111,98,120,108,106,56,55,53,100,48,111,55,110,101,53,49,51,99,109,105,121,55,106,121,99,50,120,112,112,98,54,65570,113,55,120,101,108,100,50,104,117,114,117,115,53,55,121,109,57,106,107,100,97,117,120,98,98,109,118,100,65602,108,55,55,54,101,97,110,56,109,113,102,65594,114,101,65604
-Розмір LZW: 1520 bits
+Розмір LZW: 1525 bits
 Декодована послідовність (перевірка):
-qpg5zu4e168r2m𐀌s38lobxlj875d0o7ne513cmiy7jyc2xppb6𐀢q7xeld2hurus57ym9jkdauxbbmvd𐁂l776ean8mqf𐀺re𐁄
+qpg5zu4e168r2m2ms38lobxlj875d0o7ne513cmiy7jyc2xppb613q7xeld2hurus57ym9jkdauxbbmvdm9l776ean8mqfhurejk
  Коефіцієнт стиснення LZW: 1.05
 
 ================================================================================
@@ -554,26 +554,26 @@ RLE Кодування
 Код       Елемент        Біти
 ----------------------------------------
 Code: 49, Element: 1, Bits: 16
-Code: 65536, Element: 11, Bits: 16
-Code: 65537, Element: 111, Bits: 16
-Code: 65538, Element: 1111, Bits: 16
-Code: 65539, Element: 11111, Bits: 16
-Code: 65540, Element: 111111, Bits: 16
-Code: 65541, Element: 1111111, Bits: 16
-Code: 65542, Element: 11111111, Bits: 16
-Code: 65543, Element: 111111111, Bits: 16
-Code: 65544, Element: 1111111111, Bits: 16
-Code: 65545, Element: 11111111111, Bits: 16
-Code: 65546, Element: 111111111111, Bits: 16
-Code: 65547, Element: 1111111111111, Bits: 16
-Code: 65543, Element: 111111111, Bits: 16
+Code: 65536, Element: 11, Bits: 17
+Code: 65537, Element: 111, Bits: 17
+Code: 65538, Element: 1111, Bits: 17
+Code: 65539, Element: 11111, Bits: 17
+Code: 65540, Element: 111111, Bits: 17
+Code: 65541, Element: 1111111, Bits: 17
+Code: 65542, Element: 11111111, Bits: 17
+Code: 65543, Element: 111111111, Bits: 17
+Code: 65544, Element: 1111111111, Bits: 17
+Code: 65545, Element: 11111111111, Bits: 17
+Code: 65546, Element: 111111111111, Bits: 17
+Code: 65547, Element: 1111111111111, Bits: 17
+Code: 65543, Element: 111111111, Bits: 17
 ----------------------------------------
 Закодована послідовність (LZW):
 49,65536,65537,65538,65539,65540,65541,65542,65543,65544,65545,65546,65547,65543
-Розмір LZW: 224 bits
+Розмір LZW: 237 bits
 Декодована послідовність (перевірка):
-1𐀀𐀁𐀂𐀃𐀄𐀅𐀆𐀇𐀈𐀉𐀊𐀋𐀇
- Коефіцієнт стиснення LZW: 7.14
+1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+ Коефіцієнт стиснення LZW: 6.75
 
 ================================================================================
 
