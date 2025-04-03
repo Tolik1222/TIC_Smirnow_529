@@ -14,6 +14,10 @@ def encode_ac(unique_chars, probabilitys, alphabet_size, sequence):
         u = probability_range
         unity.append([alphabet[i], l, u])
 
+    # Перевірка нормалізації ймовірностей
+    if not (0.99 <= sum(probability) <= 1.01):  # Допускаємо невелику похибку
+        raise ValueError(f"Ймовірності не нормалізовані: sum={sum(probability)}")
+
     for i in range(len(sequence) - 1):
         for j in range(len(unity)):
             if sequence[i] == unity[j][0]:
@@ -23,12 +27,24 @@ def encode_ac(unique_chars, probabilitys, alphabet_size, sequence):
                 for k in range(len(unity)):
                     unity[k][1] = probability_low
                     unity[k][2] = probability[k] * diff + probability_low
+                    probability_low = unity[k][2]
                 break
 
-    point = (unity[0][1] + unity[0][2]) / 2
-    size_cod = int(-math.log2(min(probability))) + 1
+    low = 0
+    high = 0
+    for i in range(len(unity)):
+        if unity[i][0] == sequence[-1]:
+            low = unity[i][1]
+            high = unity[i][2]
+            break
+
+    if high <= low:
+        raise ValueError(f"Помилка: high ({high}) <= low ({low}) для символу {sequence[-1]}")
+
+    point = (low + high) / 2
+    cod = math.ceil(math.log2(1 / (high - low))) + 1
     binary_code = ""
-    for _ in range(size_cod):
+    for _ in range(cod):
         point *= 2
         if point > 1:
             binary_code += "1"
@@ -63,6 +79,7 @@ def decode_ac(encoded_data_ac, sequence_length):
                 for k in range(len(unity)):
                     unity[k][1] = prob_low
                     unity[k][2] = probability[k] * diff + prob_low
+                point = (point - prob_low) / diff
                 break
 
     return decoded_sequence
@@ -98,7 +115,7 @@ def encode_ch(unique_chars, probabilitys, sequence):
                 code += "0"
                 if alphabet[i] == tree[j][0]:
                     break
-            else:
+            elif alphabet[i] in tree[j][1]:
                 code += "1"
                 if alphabet[i] == tree[j][1]:
                     break
@@ -110,27 +127,16 @@ def encode_ch(unique_chars, probabilitys, sequence):
 
 def decode_ch(encoded_sequence):
     encode, symbol_code = encoded_sequence
-    encode = list(encode)
     sequence = ""
-    count = 0
-    flag = 0
+    current_code = ""
 
-    i = 0
-    while i < len(encode):
-        for j in range(len(symbol_code)):
-            if encode[i] == symbol_code[j][1]:
-                sequence += symbol_code[j][0]
-                flag = 1
+    for bit in encode:
+        current_code += bit
+        for sym, code in symbol_code:
+            if current_code == code:
+                sequence += sym
+                current_code = ""
                 break
-        if flag == 1:
-            flag = 0
-            i += 1
-        else:
-            count += 1
-            if count == len(encode):
-                break
-            encode[i] = encode[i] + encode[i + 1]
-            encode.pop(i + 1)
 
     return sequence
 
@@ -148,18 +154,31 @@ for i, seq in enumerate(sequences, 1):
 original_sequences = [seq[:10] for seq in sequences]
 
 results = []
+results = []
 with open("results_AC_CH.txt", "w", encoding="utf-8") as f:
     for idx, sequence in enumerate(original_sequences, 1):
         sequence_length = len(sequence)
         unique_chars = set(sequence)
         sequence_alphabet_size = len(unique_chars)
         counts = collections.Counter(sequence)
-        probability = {symbol: count / 100 for symbol, count in counts.items()}
-        entropy = -sum(p * math.log2(p) for p in probability.values())
+        probability = {symbol: count / sequence_length for symbol, count in counts.items()}
 
-        encoded_data_ac, encoded_sequence_ac = encode_ac(unique_chars, probability, sequence_alphabet_size, sequence)
-        bps_ac = len(encoded_sequence_ac) / sequence_length
-        decoded_ac = decode_ac(encoded_data_ac, sequence_length)
+        # Перевірка й обчислення ентропії
+        if sequence_alphabet_size == 1:
+            entropy = 0
+        else:
+            entropy = -sum(p * math.log2(p) for p in probability.values())
+            if abs(entropy) < 1e-10:  # Усунення числових похибок
+                entropy = 0
+
+        try:
+            encoded_data_ac, encoded_sequence_ac = encode_ac(unique_chars, probability, sequence_alphabet_size,
+                                                             sequence)
+            bps_ac = len(encoded_sequence_ac) / sequence_length
+            decoded_ac = decode_ac(encoded_data_ac, sequence_length)
+        except ValueError as e:
+            print(f"Помилка в AC для послідовності {idx}: {e}")
+            continue
 
         encoded_data_ch, encoded_sequence_ch = encode_ch(unique_chars, probability, sequence)
         bps_ch = len(encoded_sequence_ch) / sequence_length
