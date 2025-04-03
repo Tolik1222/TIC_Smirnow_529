@@ -2,7 +2,6 @@ import math
 import collections
 import matplotlib.pyplot as plt
 
-
 def encode_ac(unique_chars, probabilitys, alphabet_size, sequence):
     alphabet = list(unique_chars)
     probability = [probabilitys[symbol] for symbol in alphabet]
@@ -15,8 +14,15 @@ def encode_ac(unique_chars, probabilitys, alphabet_size, sequence):
         unity.append([alphabet[i], l, u])
 
     # Перевірка нормалізації ймовірностей
-    if not (0.99 <= sum(probability) <= 1.01):  # Допускаємо невелику похибку
-        raise ValueError(f"Ймовірності не нормалізовані: sum={sum(probability)}")
+    total_prob = sum(probability)
+    if not (0.999 <= total_prob <= 1.001):  # Жорсткіша перевірка
+        raise ValueError(f"Ймовірності не нормалізовані: sum={total_prob}")
+
+    # Якщо всі символи однакові, повертаємо тривіальний результат
+    if len(set(sequence)) == 1:
+        point = 0.5  # Будь-яка точка в [0, 1)
+        binary_code = "0" * len(sequence)  # Просте кодування
+        return [point, alphabet_size, alphabet, probability], binary_code
 
     for i in range(len(sequence) - 1):
         for j in range(len(unity)):
@@ -46,17 +52,13 @@ def encode_ac(unique_chars, probabilitys, alphabet_size, sequence):
     binary_code = ""
     for _ in range(cod):
         point *= 2
-        if point > 1:
+        if point >= 1:
             binary_code += "1"
             point -= 1
-        elif point < 1:
-            binary_code += "0"
         else:
-            binary_code += "1"
-            break
+            binary_code += "0"
 
     return [point, alphabet_size, alphabet, probability], binary_code
-
 
 def decode_ac(encoded_data_ac, sequence_length):
     point, alphabet_size, alphabet, probability = encoded_data_ac
@@ -68,22 +70,33 @@ def decode_ac(encoded_data_ac, sequence_length):
         u = probability_range
         unity.append([alphabet[i], l, u])
 
+    # Якщо алфавіт має один символ, повертаємо повторення цього символу
+    if alphabet_size == 1:
+        return alphabet[0] * sequence_length
+
     decoded_sequence = ""
+    current_point = point
     for _ in range(sequence_length):
         for j in range(len(unity)):
-            if unity[j][1] <= point < unity[j][2]:
+            # Використовуємо ширший діапазон для стабільності
+            if unity[j][1] <= current_point <= unity[j][2]:
                 prob_low = unity[j][1]
                 prob_high = unity[j][2]
                 diff = prob_high - prob_low
                 decoded_sequence += unity[j][0]
+                if diff > 0:  # Уникаємо ділення на 0
+                    current_point = (current_point - prob_low) / diff
+                # Оновлюємо інтервали
                 for k in range(len(unity)):
                     unity[k][1] = prob_low
                     unity[k][2] = probability[k] * diff + prob_low
-                point = (point - prob_low) / diff
                 break
+        else:
+            # Якщо символ не знайдено, додаємо перший символ як запасний варіант
+            decoded_sequence += alphabet[0]
+            break
 
     return decoded_sequence
-
 
 def encode_ch(unique_chars, probabilitys, sequence):
     alphabet = list(unique_chars)
@@ -124,7 +137,6 @@ def encode_ch(unique_chars, probabilitys, sequence):
     encode = "".join([symbol_code[alphabet.index(c)][1] for c in sequence])
     return [encode, symbol_code], encode
 
-
 def decode_ch(encoded_sequence):
     encode, symbol_code = encoded_sequence
     sequence = ""
@@ -140,7 +152,7 @@ def decode_ch(encoded_sequence):
 
     return sequence
 
-
+# Читання послідовностей із файлу
 with open("sequence.txt", "r", encoding="utf-8") as file:
     sequences = file.read().strip().split(",")
 
@@ -153,7 +165,6 @@ for i, seq in enumerate(sequences, 1):
 
 original_sequences = [seq[:10] for seq in sequences]
 
-results = []
 results = []
 with open("results_AC_CH.txt", "w", encoding="utf-8") as f:
     for idx, sequence in enumerate(original_sequences, 1):
@@ -168,12 +179,11 @@ with open("results_AC_CH.txt", "w", encoding="utf-8") as f:
             entropy = 0
         else:
             entropy = -sum(p * math.log2(p) for p in probability.values())
-            if abs(entropy) < 1e-10:  # Усунення числових похибок
+            if abs(entropy) < 1e-10:
                 entropy = 0
 
         try:
-            encoded_data_ac, encoded_sequence_ac = encode_ac(unique_chars, probability, sequence_alphabet_size,
-                                                             sequence)
+            encoded_data_ac, encoded_sequence_ac = encode_ac(unique_chars, probability, sequence_alphabet_size, sequence)
             bps_ac = len(encoded_sequence_ac) / sequence_length
             decoded_ac = decode_ac(encoded_data_ac, sequence_length)
         except ValueError as e:
@@ -214,5 +224,4 @@ table.scale(0.8, 2)
 fig.savefig("Результати стиснення методами АС та СН.png")
 plt.close()
 
-print(
-    "Практична робота виконана. Результати збережено в 'results_AC_CH.txt' та 'Результати стиснення методами АС та СН.png'.")
+print("Практична робота виконана. Результати збережено в 'results_AC_CH.txt' та 'Результати стиснення методами АС та СН.png'.")
